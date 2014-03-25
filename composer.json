@@ -2,7 +2,7 @@
     "name": "tanker/tanker",
     "type": "library",
     "description": "Tanker is an object container with singleton pattern realization",
-    "keywords": ["container", "object container", "singleton pattern", "dependency injection"],
+    "keywords": ["object container", "singleton pattern", "dependency injection"],
     "homepage": "http://bocharsky-bw.github.io/tanker/",
     "license": "MIT",
     "authors": [
