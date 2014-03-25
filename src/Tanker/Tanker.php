@@ -1,6 +1,6 @@
 <?php
 
-namespace BW;
+namespace Tanker;
 
 use ArrayAccess;
 
@@ -13,10 +13,10 @@ use ArrayAccess;
  */
 class Tanker implements ArrayAccess {
 
-	/**
-	 * Current version
-	 */
-	const VERSION = '1.0.0';
+    /**
+    * Current version
+    */
+    const VERSION = '1.0.0';
 
     /**
      * The elements container
