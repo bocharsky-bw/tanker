@@ -9,7 +9,7 @@ Include `Tanker` to your script directly in PHP code:
 
     require_once '/path/to/Tanker.php';
 
-or add to `composer.json` file:
+or use `composer`. Add to `composer.json` file:
 
     "require": {
         "tanker/tanker": "1.0.*@dev"
