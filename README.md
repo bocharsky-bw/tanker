@@ -32,11 +32,11 @@ To **add** object to the container:
     $obj = new StdClass(); // create some object
     $tanker->set('object', $obj); // add object to container with name using setter
     
-or do the same simply with property overload:
+or do the same simply with *property overload*:
 
     $tanker->object = $obj;
 
-or do the same simply with array access:
+or do the same simply with *array access*:
 
     $tanker['object'] = $obj;
     
@@ -44,11 +44,11 @@ To **get** object from container:
 
     $obj = $tanker->get('object'); // get object by name from container using getter
     
-or do the same simply with property overload:
+or do the same simply with *property overload*:
 
     $obj = $tanker->object;
     
-or do the same simply with array access:
+or do the same simply with *array access*:
 
     $obj = $tanker['object'];
     
