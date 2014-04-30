@@ -7,16 +7,15 @@ use ArrayAccess;
 /**
  * Tanker is an object container with singleton pattern realization
  *
- * @package tanker
+ * @package Tanker
  * @author Bocharsky Victor <mail@brainforce.kiev.ua>
- * @version 1.0.0
  */
-class Tanker implements ArrayAccess {
+class Container implements ArrayAccess {
 
     /**
     * Current version
     */
-    const VERSION = '1.0.0';
+    const VERSION = '1.1.0';
 
     /**
      * The elements container
@@ -32,6 +31,7 @@ class Tanker implements ArrayAccess {
     public function __construct() {
         $this->container = array();
         $this->set('tanker', $this);
+        $this->set('container', $this);
         $this->set('object_container', $this);
     }
 

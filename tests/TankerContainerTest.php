@@ -1,7 +1,7 @@
 <?php
 
-require_once dirname(__FILE__) .'/../src/Tanker.php';
-$tanker = new \Tanker\Tanker();
+require_once dirname(__FILE__) .'/../src/Tanker/Container.php';
+$tanker = new \Tanker\Container();
 
 class A {
 
@@ -40,7 +40,7 @@ class B {
 class TankerTest {
 
     public function testScalarElement() {
-        $tanker = new \Tanker\Tanker();
+        $tanker = new \Tanker\Container();
         $tanker->set('five', 5);
         $tanker->set('string', 'Test string');
 
@@ -48,7 +48,7 @@ class TankerTest {
     }
 
     public function testObjectElement() {
-        $tanker = new \Tanker\Tanker();
+        $tanker = new \Tanker\Container();
         $a1 = new A;
         $a2 = new A;
         $tanker->set('a1', $a1);
@@ -58,7 +58,7 @@ class TankerTest {
     }
 
     public function testPropertyOverloadAccess() {
-        $tanker = new \Tanker\Tanker();
+        $tanker = new \Tanker\Container();
         $a = new A;
         $tanker->a = $a;
 
@@ -66,7 +66,7 @@ class TankerTest {
     }
 
     public function testArrayAccess() {
-        $tanker = new \Tanker\Tanker();
+        $tanker = new \Tanker\Container();
         $a = new A;
         $tanker['a'] = $a;
 
@@ -74,7 +74,7 @@ class TankerTest {
     }
 
     public function testServiceMethodAccess() {
-        $tanker = new \Tanker\Tanker();
+        $tanker = new \Tanker\Container();
         $a = new A;
         $tanker->set('a', $a);
 
@@ -82,7 +82,7 @@ class TankerTest {
     }
 
     public function testClosureElement() {
-        $tanker = new \Tanker\Tanker();
+        $tanker = new \Tanker\Container();
         $a = new A;
         $tanker->set('a', function(){
             return new A;
@@ -92,7 +92,7 @@ class TankerTest {
     }
 
     public function testSingletonDeclaration() {
-        $tanker = new \Tanker\Tanker();
+        $tanker = new \Tanker\Container();
         \A::$count = 0;
         $tanker->set('a1', function(){
             return new A;
@@ -105,7 +105,7 @@ class TankerTest {
     }
 
     public function testSingletonMatchingObjects() {
-        $tanker = new \Tanker\Tanker();
+        $tanker = new \Tanker\Container();
         $tanker->set('a', function(){
             return new A;
         });
@@ -114,7 +114,7 @@ class TankerTest {
     }
 
     public function testDependencyInjectionDeclaration() {
-        $tanker = new \Tanker\Tanker();
+        $tanker = new \Tanker\Container();
         \A::$count = 0;
         $tanker->set('a1', function(){
             return new A;
@@ -133,7 +133,7 @@ class TankerTest {
     }
 
     public function testDependencyInjectionAccess() {
-        $tanker = new \Tanker\Tanker();
+        $tanker = new \Tanker\Container();
         \A::$count = 0;
         $tanker->set('a', function(){
             return new A;
@@ -152,7 +152,7 @@ class TankerTest {
     }
 
     public function testIssetElement() {
-        $tanker = new \Tanker\Tanker();
+        $tanker = new \Tanker\Container();
         $tanker->set('a', function(){
             return new A;
         });
@@ -161,7 +161,7 @@ class TankerTest {
     }
 
     public function testUnsetElement() {
-        $tanker = new \Tanker\Tanker();
+        $tanker = new \Tanker\Container();
         $tanker->set('a', function(){
             return new A;
         });
@@ -174,7 +174,7 @@ class TankerTest {
     }
 
     public function testDeclaredkeys() {
-        $tanker = new \Tanker\Tanker();
+        $tanker = new \Tanker\Container();
         $tanker->set('a', function(){
             return new A;
         });
@@ -182,16 +182,15 @@ class TankerTest {
             return new B(new A);
         });
 
-        return $tanker->declaredKeys() === array('tanker', 'object_container', 'a', 'b');
+        return $tanker->declaredKeys() === array('tanker', 'container', 'object_container', 'a', 'b');
     }
 
     public function testDeclaredkey() {
-        $tanker = new \Tanker\Tanker();
+        $tanker = new \Tanker\Container();
         $a = new A;
         $tanker->set('a', function(){
             return new A;
         });
-        $tanker->container = 'use reserved word';
 
         return $tanker->get('a') == $a;
     }
