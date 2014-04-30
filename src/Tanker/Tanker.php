@@ -92,7 +92,7 @@ class Tanker implements ArrayAccess {
     
     public function get($key) {
     	if ( ! isset($this->container[$key])) {
-            throw new \InvalidArgumentException(sprintf('Element with key "%s" is not exists.', $name));
+            throw new \InvalidArgumentException(sprintf('Element with key "%s" is not exists.', $key));
         }
 
         if ($this->container[$key] instanceof \Closure) {
